@@ -1,7 +1,7 @@
 const express = require('express')
 const bcrypt = require('bcrypt')
 const User = require('../models/User')
-const getReadableDate = require('../helpers/getReadableDate')
+const getReadableDateTime = require('../helpers/getReadableDateTime')
 const router = express.Router()
 
 router.get('/:username?', (req, res) => {
@@ -19,7 +19,7 @@ router.get('/:username?', (req, res) => {
           username,
           displayName,
           profilePicUrl,
-          createdAt: getReadableDate(_id.getTimestamp())
+          createdAt: getReadableDateTime(_id.getTimestamp())
         }
       }))
     })
@@ -36,7 +36,7 @@ router.get('/:username?', (req, res) => {
           username,
           displayName,
           profilePicUrl,
-          createdAt: getReadableDate(_id.getTimestamp())
+          createdAt: getReadableDateTime(_id.getTimestamp())
         })
       } else {
         res.status(422).send('Username does not exist')

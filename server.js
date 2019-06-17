@@ -8,6 +8,7 @@ const app = express()
 const port = process.env.PORT || 9000
 
 const userApi = require('./apis/user')
+const chatApi = require('./apis/chat')
 
 mongoose.connect(
   process.env.DB_CLUSTER_URL,
@@ -26,6 +27,7 @@ app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
 
 app.use('/api/users', userApi)
+app.use('/api/chats', chatApi)
 
 app.listen(port, () => {
   console.log('API server is running')
